@@ -5,6 +5,8 @@ public interface IFlightSearch
 
 public class FlightSearch : IFlightSearch
 {
+    public FlightSearch(CustomerRequirements customerRequirements) { }
+
     public IEnumerable<Flight> ExactSearch()
     {
         throw new NotImplementedException();
