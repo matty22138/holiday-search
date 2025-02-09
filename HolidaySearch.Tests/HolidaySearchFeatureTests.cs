@@ -10,15 +10,15 @@ public class HolidaySearchFeatureTests
     [Test]
     public void ExactSearchForAHoliday_WithCustomerRequirments_ReturnsTheBestOfTheMatchingResults()
     {
-        // var holidaySearch = new HolidaySearch(new CustomerRequirements
+        // var holidaySearch = new HolidaySearch(new FlightSearch(new CustomerRequirements
         // {
         //     DepartingFrom = "MAN",
         //     TravelingTo = "AGP",
         //     DepartureDate = "2023/07/01",
         //     Duration = 7
-        // }, new FlightSearch(), new HotelSearch());
+        // }), new HotelSearch());
 
-        // var result = holidaySearch.Search().First();
+        // var result = holidaySearch.ExactSearch().First();
 
         // Assert.That(result.TotalPrice, Is.EqualTo("328.00"));
         // Assert.That(result.Flight.Id, Is.EqualTo(2));
