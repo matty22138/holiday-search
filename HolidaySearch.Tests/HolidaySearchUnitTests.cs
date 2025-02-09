@@ -32,7 +32,7 @@ public class HolidaySearchUnitTests
             TravelingTo = "TFS",
             DepartureDate = "2023/07/01",
             Duration = 7
-        }, _mockFlightSearch.Object);
+        }, _mockFlightSearch.Object, _mockHotelSearch.Object);
 
         holidaySearch.Search();
 
@@ -57,7 +57,7 @@ public class HolidaySearchUnitTests
             TravelingTo = "TFS",
             DepartureDate = "2023/07/01",
             Duration = 7
-        }, _mockFlightSearch.Object);
+        }, _mockFlightSearch.Object, _mockHotelSearch.Object);
 
         var result = holidaySearch.Search().First();
 
@@ -93,7 +93,7 @@ public class HolidaySearchUnitTests
             TravelingTo = "TFS",
             DepartureDate = "2023/07/01",
             Duration = 7
-        }, _mockFlightSearch.Object);
+        }, _mockFlightSearch.Object, _mockHotelSearch.Object);
 
         holidaySearch.Search();
 
