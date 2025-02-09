@@ -8,7 +8,6 @@ public class HolidaySearchUnitTests
     private Mock<IHotelSearch> _mockHotelSearch;
     private Flight _mockFlight;
     private Hotel _mockHotel;
-    private CustomerRequirements _customerRequirements;
 
     [SetUp]
     public void Setup()
@@ -30,13 +29,6 @@ public class HolidaySearchUnitTests
             Nights = 7,
             TotalPrice = 315
         };
-        _customerRequirements = new CustomerRequirements
-        {
-            DepartingFrom = "MAN",
-            TravelingTo = "TFS",
-            DepartureDate = "2023/07/01",
-            Duration = 7
-        };
     }
 
     [Test]
@@ -51,7 +43,6 @@ public class HolidaySearchUnitTests
         });
 
         var holidaySearch = new HolidaySearch(
-            _customerRequirements,
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
@@ -72,7 +63,6 @@ public class HolidaySearchUnitTests
         });
 
         var holidaySearch = new HolidaySearch(
-            _customerRequirements,
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
@@ -96,7 +86,6 @@ public class HolidaySearchUnitTests
         });
 
         var holidaySearch = new HolidaySearch(
-            _customerRequirements,
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
@@ -117,7 +106,6 @@ public class HolidaySearchUnitTests
         });
 
         var holidaySearch = new HolidaySearch(
-            _customerRequirements,
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
@@ -140,7 +128,6 @@ public class HolidaySearchUnitTests
         });
 
         var holidaySearch = new HolidaySearch(
-            _customerRequirements,
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
@@ -159,7 +146,6 @@ public class HolidaySearchUnitTests
         });
 
         var holidaySearch = new HolidaySearch(
-            _customerRequirements,
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
@@ -178,7 +164,6 @@ public class HolidaySearchUnitTests
         _mockHotelSearch.Setup((m) => m.ExactSearch()).Returns(Enumerable.Empty<Hotel>());
 
         var holidaySearch = new HolidaySearch(
-            _customerRequirements,
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
