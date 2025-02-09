@@ -128,24 +128,24 @@ public class HolidaySearchUnitTests
         Assert.That(result.Hotel.PricePerNight, Is.EqualTo(_mockHotel.PricePerNight));
     }
 
-    // [Test]
-    // public void Search_WithCustomerRequirments_ReturnsTheTotalPriceInTheResults()
-    // {
-    //     _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
-    //         _mockFlight
-    //     });
+    [Test]
+    public void Search_WithCustomerRequirments_ReturnsTheTotalPriceInTheResults()
+    {
+        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+            _mockFlight
+        });
 
-    //     _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
-    //         _mockHotel
-    //     });
+        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+            _mockHotel
+        });
 
-    //     var holidaySearch = new HolidaySearch(
-    //         _customerRequirements,
-    //         _mockFlightSearch.Object,
-    //         _mockHotelSearch.Object);
+        var holidaySearch = new HolidaySearch(
+            _customerRequirements,
+            _mockFlightSearch.Object,
+            _mockHotelSearch.Object);
 
-    //     var result = holidaySearch.Search().First();
+        var result = holidaySearch.Search().First();
 
-    //     Assert.That(result.TotalPrice, Is.EqualTo("£785.00"));
-    // }
+        Assert.That(result.TotalPrice, Is.EqualTo(785));
+    }
 }
