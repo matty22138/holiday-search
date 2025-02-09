@@ -1,4 +1,4 @@
-public class SearchResult
+public class Holiday
 {
     public string TotalPrice { get; set; }
     public Flight Flight { get; set; }
