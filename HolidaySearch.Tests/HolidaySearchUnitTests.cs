@@ -44,6 +44,10 @@ public class HolidaySearchUnitTests
             _mockFlight
         });
 
+        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+            _mockHotel
+        });
+
         var holidaySearch = new HolidaySearch(
             _customerRequirements,
             _mockFlightSearch.Object,
@@ -59,6 +63,10 @@ public class HolidaySearchUnitTests
     {
         _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
             _mockFlight
+        });
+
+        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+            _mockHotel
         });
 
         var holidaySearch = new HolidaySearch(
@@ -100,6 +108,10 @@ public class HolidaySearchUnitTests
     {
         _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
             _mockFlight
+        });
+
+        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+            _mockHotel
         });
 
         var holidaySearch = new HolidaySearch(

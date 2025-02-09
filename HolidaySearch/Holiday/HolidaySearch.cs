@@ -24,12 +24,13 @@ public class HolidaySearch
         //FlightSearch
         //Total price
         var matchingFlight = _flightSearch.Search().First();
-        _hotelSearch.Search();
+        var matchingHotel = _hotelSearch.Search().First();
 
         return new List<Holiday> {
             new Holiday
             {
-                Flight = matchingFlight
+                Flight = matchingFlight,
+                Hotel = matchingHotel
             }
         };
     }
