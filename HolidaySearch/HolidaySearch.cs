@@ -5,7 +5,7 @@ public class HolidaySearch
 {
     private readonly CustomerRequirements _customerRequirements;
 
-    public HolidaySearch(CustomerRequirements customerRequirements)
+    public HolidaySearch(CustomerRequirements customerRequirements, IFlightSearch flightSearch = null)
     {
         _customerRequirements = customerRequirements;
     }
