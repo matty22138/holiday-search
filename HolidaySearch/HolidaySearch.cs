@@ -7,6 +7,15 @@ public class HolidaySearch
 
     public IEnumerable<SearchResult> GetResults()
     {
-        throw new NotImplementedException();
+        return new List<SearchResult> {
+            new SearchResult {
+                Flight = new Flight {
+                    Id = 1,
+                    DepartingFrom = "MAN",
+                    TravellingTo = "TFS",
+                    Price = "£470.00"
+                }
+            }
+        };
     }
 }
