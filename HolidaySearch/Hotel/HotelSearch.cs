@@ -21,10 +21,10 @@ public class HotelSearch : IHotelSearch
             f.Nights == _hotelRequirements.Duration &&
             f.LocalAirports.Contains(_hotelRequirements.TravelingTo));
 
-        // if (!matchingFlights.Any())
-        // {
-        //     return Enumerable.Empty<Flight>();
-        // }
+        if (!matchingHotels.Any())
+        {
+            return Enumerable.Empty<Hotel>();
+        }
 
         var bestHotel = matchingHotels.First();
 
