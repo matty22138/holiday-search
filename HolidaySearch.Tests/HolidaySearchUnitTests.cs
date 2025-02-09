@@ -94,4 +94,23 @@ public class HolidaySearchUnitTests
 
         _mockHotelSearch.Verify((m) => m.Search(), Times.Once);
     }
+
+    [Test]
+    public void Search_WithCustomerRequirments_ReturnsTheBestHotelInTheResults()
+    {
+        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+            _mockFlight
+        });
+
+        var holidaySearch = new HolidaySearch(
+            _customerRequirements,
+            _mockFlightSearch.Object,
+            _mockHotelSearch.Object);
+
+        var result = holidaySearch.Search().First();
+
+        Assert.That(result.Hotel.Id, Is.EqualTo(_mockHotel.Id));
+        Assert.That(result.Hotel.Name, Is.EqualTo(_mockHotel.Name));
+        Assert.That(result.Hotel.Price, Is.EqualTo(_mockHotel.Price));
+    }
 }
