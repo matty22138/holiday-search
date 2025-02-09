@@ -19,9 +19,6 @@ public class HolidaySearch
 
     public IEnumerable<Holiday> Search()
     {
-        //Exact match
-        //HotelSearch
-        //FlightSearch
         //Total price
         var matchingFlight = _flightSearch.Search().First();
         var matchingHotel = _hotelSearch.Search().First();

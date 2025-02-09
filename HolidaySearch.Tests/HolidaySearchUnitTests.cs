@@ -26,7 +26,9 @@ public class HolidaySearchUnitTests
         {
             Id = 12,
             Name = "MS Maestranza Hotel",
-            Price = "£45.00"
+            PricePerNight = "£45.00",
+            Nights = 7,
+            TotalPrice = "£315.00"
         };
         _customerRequirements = new CustomerRequirements
         {
@@ -123,6 +125,27 @@ public class HolidaySearchUnitTests
 
         Assert.That(result.Hotel.Id, Is.EqualTo(_mockHotel.Id));
         Assert.That(result.Hotel.Name, Is.EqualTo(_mockHotel.Name));
-        Assert.That(result.Hotel.Price, Is.EqualTo(_mockHotel.Price));
+        Assert.That(result.Hotel.PricePerNight, Is.EqualTo(_mockHotel.PricePerNight));
+    }
+
+    [Test]
+    public void Search_WithCustomerRequirments_ReturnsTheTotalPriceInTheResults()
+    {
+        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+            _mockFlight
+        });
+
+        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+            _mockHotel
+        });
+
+        var holidaySearch = new HolidaySearch(
+            _customerRequirements,
+            _mockFlightSearch.Object,
+            _mockHotelSearch.Object);
+
+        var result = holidaySearch.Search().First();
+
+        Assert.That(result.TotalPrice, Is.EqualTo("£785.00"));
     }
 }
