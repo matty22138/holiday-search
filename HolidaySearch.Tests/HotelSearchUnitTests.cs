@@ -40,19 +40,19 @@ public class HotelSearchUnitTests
         Assert.That(result.TotalPrice, Is.EqualTo(450));
     }
 
-    // [Test]
-    // public void ExactSearch_WhereNoHotelsMatchCustomerRequirements_ReturnsNoHotel()
-    // {
-    //     var holidaySearch = new FlightSearch(new CustomerRequirements()
-    //     {
-    //         DepartingFrom = "MAN",
-    //         TravelingTo = "AGP",
-    //         DepartureDate = "2025-10-25",
-    //         Duration = 7
-    //     });
+    [Test]
+    public void ExactSearch_WhereNoHotelsMatchCustomerRequirements_ReturnsNoHotel()
+    {
+        var hotelSearch = new HotelSearch(new CustomerRequirements()
+        {
+            DepartingFrom = "MAN",
+            TravelingTo = "AGP",
+            DepartureDate = "2025-10-25",
+            Duration = 7
+        });
 
-    //     var results = holidaySearch.ExactSearch();
+        var results = hotelSearch.ExactSearch();
 
-    //     Assert.That(results, Is.Empty);
-    // }
+        Assert.That(results, Is.Empty);
+    }
 }
