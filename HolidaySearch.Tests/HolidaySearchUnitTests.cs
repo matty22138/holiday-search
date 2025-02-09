@@ -148,4 +148,23 @@ public class HolidaySearchUnitTests
 
         Assert.That(result.TotalPrice, Is.EqualTo(785));
     }
+
+    [Test]
+    public void Search_WhenThereIsNoMatchingFlight_ReturnsNoHolidayInTheSearchResults()
+    {
+        _mockFlightSearch.Setup((m) => m.Search()).Returns(Enumerable.Empty<Flight>);
+
+        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+            _mockHotel
+        });
+
+        var holidaySearch = new HolidaySearch(
+            _customerRequirements,
+            _mockFlightSearch.Object,
+            _mockHotelSearch.Object);
+
+        var results = holidaySearch.Search();
+
+        Assert.That(results.Count, Is.Zero);
+    }
 }
