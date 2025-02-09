@@ -42,11 +42,11 @@ public class HolidaySearchUnitTests
     [Test]
     public void Search_WithCustomerRequirments_DefersToTheFlightSearchToGetTheBestFlight()
     {
-        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+        _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
         });
 
-        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+        _mockHotelSearch.Setup((m) => m.ExactSearch()).Returns(new List<Hotel>{
             _mockHotel
         });
 
@@ -55,19 +55,19 @@ public class HolidaySearchUnitTests
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
-        holidaySearch.Search();
+        holidaySearch.ExactSearch();
 
-        _mockFlightSearch.Verify((m) => m.Search(), Times.Once);
+        _mockFlightSearch.Verify((m) => m.ExactSearch(), Times.Once);
     }
 
     [Test]
     public void Search_WithCustomerRequirments_ReturnsTheBestFlightInTheResults()
     {
-        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+        _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
         });
 
-        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+        _mockHotelSearch.Setup((m) => m.ExactSearch()).Returns(new List<Hotel>{
             _mockHotel
         });
 
@@ -76,7 +76,7 @@ public class HolidaySearchUnitTests
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
-        var result = holidaySearch.Search().First();
+        var result = holidaySearch.ExactSearch().First();
 
         Assert.That(result.Flight.Id, Is.EqualTo(_mockFlight.Id));
         Assert.That(result.Flight.DepartingFrom, Is.EqualTo(_mockFlight.DepartingFrom));
@@ -87,11 +87,11 @@ public class HolidaySearchUnitTests
     [Test]
     public void Search_WithCustomerRequirments_DefersToTheHotelSearchToGetTheBestHotel()
     {
-        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+        _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
         });
 
-        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+        _mockHotelSearch.Setup((m) => m.ExactSearch()).Returns(new List<Hotel>{
             _mockHotel
         });
 
@@ -100,19 +100,19 @@ public class HolidaySearchUnitTests
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
-        holidaySearch.Search();
+        holidaySearch.ExactSearch();
 
-        _mockHotelSearch.Verify((m) => m.Search(), Times.Once);
+        _mockHotelSearch.Verify((m) => m.ExactSearch(), Times.Once);
     }
 
     [Test]
     public void Search_WithCustomerRequirments_ReturnsTheBestHotelInTheResults()
     {
-        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+        _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
         });
 
-        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+        _mockHotelSearch.Setup((m) => m.ExactSearch()).Returns(new List<Hotel>{
             _mockHotel
         });
 
@@ -121,7 +121,7 @@ public class HolidaySearchUnitTests
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
-        var result = holidaySearch.Search().First();
+        var result = holidaySearch.ExactSearch().First();
 
         Assert.That(result.Hotel.Id, Is.EqualTo(_mockHotel.Id));
         Assert.That(result.Hotel.Name, Is.EqualTo(_mockHotel.Name));
@@ -131,11 +131,11 @@ public class HolidaySearchUnitTests
     [Test]
     public void Search_WithCustomerRequirments_ReturnsTheTotalPriceInTheResults()
     {
-        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+        _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
         });
 
-        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+        _mockHotelSearch.Setup((m) => m.ExactSearch()).Returns(new List<Hotel>{
             _mockHotel
         });
 
@@ -144,7 +144,7 @@ public class HolidaySearchUnitTests
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
-        var result = holidaySearch.Search().First();
+        var result = holidaySearch.ExactSearch().First();
 
         Assert.That(result.TotalPrice, Is.EqualTo(785));
     }
@@ -152,9 +152,9 @@ public class HolidaySearchUnitTests
     [Test]
     public void Search_WhenThereIsNoMatchingFlight_ReturnsNoHolidayInTheSearchResults()
     {
-        _mockFlightSearch.Setup((m) => m.Search()).Returns(Enumerable.Empty<Flight>);
+        _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(Enumerable.Empty<Flight>);
 
-        _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
+        _mockHotelSearch.Setup((m) => m.ExactSearch()).Returns(new List<Hotel>{
             _mockHotel
         });
 
@@ -163,7 +163,7 @@ public class HolidaySearchUnitTests
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
-        var results = holidaySearch.Search();
+        var results = holidaySearch.ExactSearch();
 
         Assert.That(results.Count, Is.Zero);
     }
@@ -171,18 +171,18 @@ public class HolidaySearchUnitTests
     [Test]
     public void Search_WhenThereIsNoMatchingHotel_ReturnsNoHolidayInTheSearchResults()
     {
-        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+        _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
         });
 
-        _mockHotelSearch.Setup((m) => m.Search()).Returns(Enumerable.Empty<Hotel>());
+        _mockHotelSearch.Setup((m) => m.ExactSearch()).Returns(Enumerable.Empty<Hotel>());
 
         var holidaySearch = new HolidaySearch(
             _customerRequirements,
             _mockFlightSearch.Object,
             _mockHotelSearch.Object);
 
-        var results = holidaySearch.Search();
+        var results = holidaySearch.ExactSearch();
 
         Assert.That(results.Count, Is.Zero);
     }

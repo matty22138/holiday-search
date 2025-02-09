@@ -17,10 +17,10 @@ public class HolidaySearch
         _hotelSearch = hotelSearch;
     }
 
-    public IEnumerable<Holiday> Search()
+    public IEnumerable<Holiday> ExactSearch()
     {
-        var matchingFlights = _flightSearch.Search();
-        var matchingHotels = _hotelSearch.Search();
+        var matchingFlights = _flightSearch.ExactSearch();
+        var matchingHotels = _hotelSearch.ExactSearch();
 
         if (!matchingHotels.Any() || !matchingFlights.Any())
         {

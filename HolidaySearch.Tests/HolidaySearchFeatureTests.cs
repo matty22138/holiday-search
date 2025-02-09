@@ -8,7 +8,7 @@ public class HolidaySearchFeatureTests
     }
 
     [Test]
-    public void SearchingForAHoliday_WithCustomerRequirments_ReturnsTheBestOfTheMatchingResults()
+    public void ExactSearchForAHoliday_WithCustomerRequirments_ReturnsTheBestOfTheMatchingResults()
     {
         // var holidaySearch = new HolidaySearch(new CustomerRequirements
         // {
@@ -27,6 +27,6 @@ public class HolidaySearchFeatureTests
         // Assert.That(result.Flight.Price, Is.EqualTo("£245.00"));
         // Assert.That(result.Hotel.Id, Is.EqualTo(9));
         // Assert.That(result.Hotel.Name, Is.EqualTo("Nh Malaga"));
-        // Assert.That(result.Hotel.Price, Is.EqualTo("£83.00"));
+        // Assert.That(result.Hotel.TotalPrice, Is.EqualTo(83.00));
     }
 }

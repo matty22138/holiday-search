@@ -1,11 +1,11 @@
 public interface IHotelSearch
 {
-    IEnumerable<Hotel> Search();
+    IEnumerable<Hotel> ExactSearch();
 }
 
 public class HotelSearch : IHotelSearch
 {
-    public IEnumerable<Hotel> Search()
+    public IEnumerable<Hotel> ExactSearch()
     {
         throw new NotImplementedException();
     }
