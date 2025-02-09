@@ -32,7 +32,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void Search_WithCustomerRequirments_DefersToTheFlightSearchToGetTheBestFlight()
+    public void ExactSearch_WithCustomerRequirments_DefersToTheFlightSearchToGetTheBestFlight()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -52,7 +52,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void Search_WithCustomerRequirments_ReturnsTheBestFlightInTheResults()
+    public void ExactSearch_WithCustomerRequirments_ReturnsTheBestFlightInTheResults()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -75,7 +75,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void Search_WithCustomerRequirments_DefersToTheHotelSearchToGetTheBestHotel()
+    public void ExactSearch_WithCustomerRequirments_DefersToTheHotelSearchToGetTheBestHotel()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -95,7 +95,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void Search_WithCustomerRequirments_ReturnsTheBestHotelInTheResults()
+    public void ExactSearch_WithCustomerRequirments_ReturnsTheBestHotelInTheResults()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -117,7 +117,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void Search_WithCustomerRequirments_ReturnsTheTotalPriceInTheResults()
+    public void ExactSearch_WithCustomerRequirments_ReturnsTheTotalPriceInTheResults()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -137,7 +137,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void Search_WhenThereIsNoMatchingFlight_ReturnsNoHolidayInTheSearchResults()
+    public void ExactSearch_WhenThereIsNoMatchingFlight_ReturnsNoHolidayInTheSearchResults()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(Enumerable.Empty<Flight>);
 
@@ -155,7 +155,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void Search_WhenThereIsNoMatchingHotel_ReturnsNoHolidayInTheSearchResults()
+    public void ExactSearch_WhenThereIsNoMatchingHotel_ReturnsNoHolidayInTheSearchResults()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
