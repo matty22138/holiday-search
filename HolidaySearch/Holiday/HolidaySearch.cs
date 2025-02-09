@@ -20,29 +20,22 @@ public class HolidaySearch
     public IEnumerable<Holiday> Search()
     {
         var matchingFlights = _flightSearch.Search();
-
-        if (!matchingFlights.Any())
-        {
-            return Enumerable.Empty<Holiday>();
-        }
-
-        var matchingFlight = matchingFlights.First();
-
         var matchingHotels = _hotelSearch.Search();
 
-        if (!matchingHotels.Any())
+        if (!matchingHotels.Any() || !matchingFlights.Any())
         {
             return Enumerable.Empty<Holiday>();
         }
 
-        var matchingHotel = matchingHotels.First();
+        var bestHotel = matchingHotels.First();
+        var bestFlight = matchingFlights.First();
 
         return new List<Holiday> {
             new Holiday
             {
-                Flight = matchingFlight,
-                Hotel = matchingHotel,
-                TotalPrice = matchingFlight.Price + matchingHotel.TotalPrice
+                Flight = bestFlight,
+                Hotel = bestHotel,
+                TotalPrice = bestFlight.Price + bestHotel.TotalPrice
             }
         };
     }
