@@ -9,6 +9,13 @@ public class FlightSearch : IFlightSearch
 
     public IEnumerable<Flight> ExactSearch()
     {
-        throw new NotImplementedException();
+        return new List<Flight>{
+            new Flight {
+                Id = 10,
+                DepartingFrom = "LGW",
+                TravellingTo = "AGP",
+                Price = 225
+            }
+        };
     }
 }
