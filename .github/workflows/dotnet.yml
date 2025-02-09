@@ -23,6 +23,8 @@ jobs:
         working-directory: HolidaySearch
         run: dotnet restore HolidaySearch.csproj
       - name: Build
-        run: dotnet build --no-restore
+        working-directory: HolidaySearch
+        run: dotnet build HolidaySearch.csproj
       - name: Test
-        run: dotnet test --no-build --verbosity normal
+        working-directory: HolidaySearch.Tests
+        run: dotnet test HolidaySearch.Tests.csproj
