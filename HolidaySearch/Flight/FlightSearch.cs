@@ -6,33 +6,23 @@ public interface IFlightSearch
 public class FlightSearch : IFlightSearch
 {
     private readonly CustomerRequirements _customerRequirements;
+    private readonly IEnumerable<Flight> _flightInventory;
 
     public FlightSearch(CustomerRequirements customerRequirements)
     {
         _customerRequirements = customerRequirements;
+        _flightInventory = new InMemoryFlights().GetAll();
     }
 
     public IEnumerable<Flight> ExactSearch()
     {
-        if (_customerRequirements.DepartureDate == "2023-10-25")
-        {
-            return new List<Flight>{
-                new Flight {
-                    Id = 12,
-                    DepartingFrom = "MAN",
-                    TravellingTo = "AGP",
-                    Price = 202
-                }
-            };
-        }
+        var bestFlight = _flightInventory.First((f) =>
+            f.DepartingFrom == _customerRequirements.DepartingFrom &&
+            f.TravellingTo == _customerRequirements.TravelingTo &&
+            f.DepartureDate == _customerRequirements.DepartureDate);
 
-        return new List<Flight>{
-            new Flight {
-                Id = 10,
-                DepartingFrom = "LGW",
-                TravellingTo = "AGP",
-                Price = 225
-            }
+        return new List<Flight> {
+            bestFlight
         };
     }
 }
