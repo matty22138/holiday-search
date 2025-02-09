@@ -27,7 +27,15 @@ public class HolidaySearch
         }
 
         var matchingFlight = matchingFlights.First();
-        var matchingHotel = _hotelSearch.Search().First();
+
+        var matchingHotels = _hotelSearch.Search();
+
+        if (!matchingHotels.Any())
+        {
+            return Enumerable.Empty<Holiday>();
+        }
+
+        var matchingHotel = matchingHotels.First();
 
         return new List<Holiday> {
             new Holiday
