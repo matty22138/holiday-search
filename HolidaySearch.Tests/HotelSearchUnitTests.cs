@@ -17,8 +17,8 @@ public class HotelSearchUnitTests
 
         Assert.That(result.Id, Is.EqualTo(9));
         Assert.That(result.Name, Is.EqualTo("Nh Malaga"));
-        Assert.That(result.PricePerNight, Is.EqualTo(73));
-        Assert.That(result.TotalPrice, Is.EqualTo(511));
+        Assert.That(result.PricePerNight, Is.EqualTo(83));
+        Assert.That(result.TotalPrice, Is.EqualTo(581));
     }
 
     // [Test]

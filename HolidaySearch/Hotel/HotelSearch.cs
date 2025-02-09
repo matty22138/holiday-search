@@ -5,17 +5,31 @@ public interface IHotelSearch
 
 public class HotelSearch : IHotelSearch
 {
-    // private readonly IFlightRequirements _flightRequirements;
-    // private readonly IEnumerable<Flight> _flightInventory;
+    private readonly IHotelRequirements _hotelRequirements;
+    private readonly IEnumerable<Hotel> _hotelInvetory;
 
     public HotelSearch(IHotelRequirements hotelRequirements)
     {
-        // _hotelRequirement = flightRequirements;
-        // _flightInventory = new InMemoryFlights().GetAll();
+        _hotelRequirements = hotelRequirements;
+        _hotelInvetory = new InMemoryHotels().GetAll();
     }
 
     public IEnumerable<Hotel> ExactSearch()
     {
-        throw new NotImplementedException();
+        var matchingHotels = _hotelInvetory.Where((f) =>
+            f.ArrivalDate == _hotelRequirements.DepartureDate &&
+            f.Nights == _hotelRequirements.Duration &&
+            f.LocalAirports.Contains(_hotelRequirements.TravelingTo));
+
+        // if (!matchingFlights.Any())
+        // {
+        //     return Enumerable.Empty<Flight>();
+        // }
+
+        var bestHotel = matchingHotels.First();
+
+        return new List<Hotel> {
+            bestHotel
+        };
     }
 }

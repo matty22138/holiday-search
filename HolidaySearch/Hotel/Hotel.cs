@@ -5,6 +5,6 @@ public class Hotel
     public string ArrivalDate { get; set; }
     public int PricePerNight { get; set; }
     public string[] LocalAirports { get; set; }
-    public int TotalPrice { get; set; }
+    public int TotalPrice { get { return PricePerNight * Nights; } }
     public int Nights { get; set; }
 }

@@ -27,8 +27,7 @@ public class HolidaySearchUnitTests
             Id = 12,
             Name = "MS Maestranza Hotel",
             PricePerNight = 45,
-            Nights = 7,
-            TotalPrice = 315
+            Nights = 7
         };
     }
 
