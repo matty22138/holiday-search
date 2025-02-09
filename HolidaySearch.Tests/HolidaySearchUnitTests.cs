@@ -6,33 +6,48 @@ public class HolidaySearchUnitTests
 {
     private Mock<IFlightSearch> _mockFlightSearch;
     private Mock<IHotelSearch> _mockHotelSearch;
+    private Flight _mockFlight;
+    private Hotel _mockHotel;
+    private CustomerRequirements _customerRequirements;
 
     [SetUp]
     public void Setup()
     {
         _mockFlightSearch = new Mock<IFlightSearch>();
         _mockHotelSearch = new Mock<IHotelSearch>();
+        _mockFlight = new Flight
+        {
+            Id = 1,
+            DepartingFrom = "MAN",
+            TravellingTo = "TFS",
+            Price = "£470.00"
+        };
+        _mockHotel = new Hotel
+        {
+            Id = 12,
+            Name = "MS Maestranza Hotel",
+            Price = "£45.00"
+        };
+        _customerRequirements = new CustomerRequirements
+        {
+            DepartingFrom = "MAN",
+            TravelingTo = "TFS",
+            DepartureDate = "2023/07/01",
+            Duration = 7
+        };
     }
 
     [Test]
     public void Search_WithCustomerRequirments_DefersToTheFlightSearchToGetTheBestFlight()
     {
         _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
-            new Flight {
-                Id = 1,
-                DepartingFrom = "MAN",
-                TravellingTo = "TFS",
-                Price = "£470.00"
-            }
+            _mockFlight
         });
 
-        var holidaySearch = new HolidaySearch(new CustomerRequirements
-        {
-            DepartingFrom = "MAN",
-            TravelingTo = "TFS",
-            DepartureDate = "2023/07/01",
-            Duration = 7
-        }, _mockFlightSearch.Object, _mockHotelSearch.Object);
+        var holidaySearch = new HolidaySearch(
+            _customerRequirements,
+            _mockFlightSearch.Object,
+            _mockHotelSearch.Object);
 
         holidaySearch.Search();
 
@@ -43,57 +58,37 @@ public class HolidaySearchUnitTests
     public void Search_WithCustomerRequirments_ReturnsTheBestFlightInTheResults()
     {
         _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
-            new Flight {
-                Id = 1,
-                DepartingFrom = "MAN",
-                TravellingTo = "TFS",
-                Price = "£470.00"
-            }
+            _mockFlight
         });
 
-        var holidaySearch = new HolidaySearch(new CustomerRequirements
-        {
-            DepartingFrom = "MAN",
-            TravelingTo = "TFS",
-            DepartureDate = "2023/07/01",
-            Duration = 7
-        }, _mockFlightSearch.Object, _mockHotelSearch.Object);
+        var holidaySearch = new HolidaySearch(
+            _customerRequirements,
+            _mockFlightSearch.Object,
+            _mockHotelSearch.Object);
 
         var result = holidaySearch.Search().First();
 
-        Assert.That(result.Flight.Id, Is.EqualTo(1));
-        Assert.That(result.Flight.DepartingFrom, Is.EqualTo("MAN"));
-        Assert.That(result.Flight.TravellingTo, Is.EqualTo("TFS"));
-        Assert.That(result.Flight.Price, Is.EqualTo("£470.00"));
+        Assert.That(result.Flight.Id, Is.EqualTo(_mockFlight.Id));
+        Assert.That(result.Flight.DepartingFrom, Is.EqualTo(_mockFlight.DepartingFrom));
+        Assert.That(result.Flight.TravellingTo, Is.EqualTo(_mockFlight.TravellingTo));
+        Assert.That(result.Flight.Price, Is.EqualTo(_mockFlight.Price));
     }
 
     [Test]
     public void Search_WithCustomerRequirments_DefersToTheHotelSearchToGetTheBestHotel()
     {
         _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
-            new Flight {
-                Id = 1,
-                DepartingFrom = "MAN",
-                TravellingTo = "TFS",
-                Price = "£470.00"
-            }
+            _mockFlight
         });
 
         _mockHotelSearch.Setup((m) => m.Search()).Returns(new List<Hotel>{
-            new Hotel {
-                Id = 12,
-                Name = "MS Maestranza Hotel",
-                Price = "£45.00"
-            }
+            _mockHotel
         });
 
-        var holidaySearch = new HolidaySearch(new CustomerRequirements
-        {
-            DepartingFrom = "MAN",
-            TravelingTo = "TFS",
-            DepartureDate = "2023/07/01",
-            Duration = 7
-        }, _mockFlightSearch.Object, _mockHotelSearch.Object);
+        var holidaySearch = new HolidaySearch(
+            _customerRequirements,
+            _mockFlightSearch.Object,
+            _mockHotelSearch.Object);
 
         holidaySearch.Search();
 

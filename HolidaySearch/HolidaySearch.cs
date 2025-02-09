@@ -9,8 +9,8 @@ public class HolidaySearch
 
     public HolidaySearch(
         CustomerRequirements customerRequirements,
-        IFlightSearch flightSearch = null,
-        IHotelSearch hotelSearch = null)
+        IFlightSearch flightSearch,
+        IHotelSearch hotelSearch)
     {
         _customerRequirements = customerRequirements;
         _flightSearch = flightSearch;
