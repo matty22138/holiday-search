@@ -5,21 +5,21 @@ public interface IFlightSearch
 
 public class FlightSearch : IFlightSearch
 {
-    private readonly CustomerRequirements _customerRequirements;
+    private readonly IFlightRequirements _flightRequirements;
     private readonly IEnumerable<Flight> _flightInventory;
 
-    public FlightSearch(CustomerRequirements customerRequirements)
+    public FlightSearch(IFlightRequirements flightRequirements)
     {
-        _customerRequirements = customerRequirements;
+        _flightRequirements = flightRequirements;
         _flightInventory = new InMemoryFlights().GetAll();
     }
 
     public IEnumerable<Flight> ExactSearch()
     {
         var matchingFlights = _flightInventory.Where((f) =>
-            f.DepartingFrom == _customerRequirements.DepartingFrom &&
-            f.TravellingTo == _customerRequirements.TravelingTo &&
-            f.DepartureDate == _customerRequirements.DepartureDate);
+            f.DepartingFrom == _flightRequirements.DepartingFrom &&
+            f.TravellingTo == _flightRequirements.TravelingTo &&
+            f.DepartureDate == _flightRequirements.DepartureDate);
 
         if (!matchingFlights.Any())
         {
