@@ -18,7 +18,6 @@ public class HolidaySearch
         //HotelSearch
         //FlightSearch
         //Total price
-
         var matchingFlight = _flightSearch.GetResults().First();
 
         return new List<SearchResult> {
@@ -27,30 +26,5 @@ public class HolidaySearch
                 Flight = matchingFlight
             }
         };
-
-        // if (_customerRequirements.TravelingTo == "LPA")
-        // {
-        //     return new List<SearchResult> {
-        //         new SearchResult {
-        //             Flight = new Flight {
-        //                 Id = 1,
-        //                 DepartingFrom = "MAN",
-        //                 TravellingTo = "LPA",
-        //                 Price = "£125.00"
-        //             }
-        //         }
-        //     };
-        // }
-
-        // return new List<SearchResult> {
-        //     new SearchResult {
-        //         Flight = new Flight {
-        //             Id = 1,
-        //             DepartingFrom = "MAN",
-        //             TravellingTo = "TFS",
-        //             Price = "£470.00"
-        //         }
-        //     }
-        // };
     }
 }
