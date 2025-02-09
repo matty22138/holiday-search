@@ -16,10 +16,17 @@ public class FlightSearch : IFlightSearch
 
     public IEnumerable<Flight> ExactSearch()
     {
-        var bestFlight = _flightInventory.First((f) =>
+        var matchingFlights = _flightInventory.Where((f) =>
             f.DepartingFrom == _customerRequirements.DepartingFrom &&
             f.TravellingTo == _customerRequirements.TravelingTo &&
             f.DepartureDate == _customerRequirements.DepartureDate);
+
+        if (!matchingFlights.Any())
+        {
+            return Enumerable.Empty<Flight>();
+        }
+
+        var bestFlight = matchingFlights.First();
 
         return new List<Flight> {
             bestFlight
