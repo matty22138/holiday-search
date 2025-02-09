@@ -27,7 +27,6 @@ public class HolidaySearch
         }
 
         var matchingFlight = matchingFlights.First();
-
         var matchingHotel = _hotelSearch.Search().First();
 
         return new List<Holiday> {
