@@ -19,7 +19,8 @@ public class HolidaySearchUnitTests
             Id = 1,
             DepartingFrom = "MAN",
             TravellingTo = "TFS",
-            Price = 470
+            Price = 470,
+            DepartureDate = "2024-01-01"
         };
         _mockHotel = new Hotel
         {
