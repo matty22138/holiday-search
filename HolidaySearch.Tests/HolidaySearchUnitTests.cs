@@ -13,6 +13,31 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
+    public void Search_WithCustomerRequirments_DefersToTheFlightSearchToGetTheBestFlight()
+    {
+        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
+            new Flight {
+                Id = 1,
+                DepartingFrom = "MAN",
+                TravellingTo = "TFS",
+                Price = "£470.00"
+            }
+        });
+
+        var holidaySearch = new HolidaySearch(new CustomerRequirements
+        {
+            DepartingFrom = "MAN",
+            TravelingTo = "TFS",
+            DepartureDate = "2023/07/01",
+            Duration = 7
+        }, _mockFlightSearch.Object);
+
+        holidaySearch.Search();
+
+        _mockFlightSearch.Verify((m) => m.Search(), Times.Once);
+    }
+
+    [Test]
     public void Search_WithCustomerRequirments_ReturnsTheBestFlightInTheResults()
     {
         _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
