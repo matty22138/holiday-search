@@ -2,12 +2,6 @@ namespace HolidaySearch.Tests;
 
 public class FlightSearchUnitTests
 {
-    [SetUp]
-    public void Setup()
-    {
-
-    }
-
     [Test]
     public void ExactSearch_WithCustomerRequirments_ReturnsTheExactMatchingFlight()
     {
