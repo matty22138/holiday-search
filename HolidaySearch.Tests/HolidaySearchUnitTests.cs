@@ -32,7 +32,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void ExactSearch_WithCustomerRequirments_DefersToTheFlightSearchToGetTheBestFlight()
+    public void ExactSearch_DefersToTheFlightSearchToGetTheBestFlight()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -52,7 +52,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void ExactSearch_WithCustomerRequirments_ReturnsTheBestFlightInTheResults()
+    public void ExactSearch_ReturnsTheBestFlightInTheResults()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -75,7 +75,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void ExactSearch_WithCustomerRequirments_DefersToTheHotelSearchToGetTheBestHotel()
+    public void ExactSearch_DefersToTheHotelSearchToGetTheBestHotel()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -95,7 +95,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void ExactSearch_WithCustomerRequirments_ReturnsTheBestHotelInTheResults()
+    public void ExactSearch_ReturnsTheBestHotelInTheResults()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
@@ -117,7 +117,7 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void ExactSearch_WithCustomerRequirments_ReturnsTheTotalPriceInTheResults()
+    public void ExactSearch_ReturnsTheTotalPriceInTheResults()
     {
         _mockFlightSearch.Setup((m) => m.ExactSearch()).Returns(new List<Flight>{
             _mockFlight
