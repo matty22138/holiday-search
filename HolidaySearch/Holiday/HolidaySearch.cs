@@ -19,8 +19,15 @@ public class HolidaySearch
 
     public IEnumerable<Holiday> Search()
     {
-        //Total price
-        var matchingFlight = _flightSearch.Search().First();
+        var matchingFlights = _flightSearch.Search();
+
+        if (!matchingFlights.Any())
+        {
+            return Enumerable.Empty<Holiday>();
+        }
+
+        var matchingFlight = matchingFlights.First();
+
         var matchingHotel = _hotelSearch.Search().First();
 
         return new List<Holiday> {
