@@ -16,7 +16,7 @@ public class HolidaySearchFeatureTests
         //     TravelingTo = "AGP",
         //     DepartureDate = "2023/07/01",
         //     Duration = 7
-        // });
+        // }, new FlightSearch(), new HotelSearch());
 
         // var result = holidaySearch.Search().First();
 
