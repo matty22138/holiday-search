@@ -18,7 +18,7 @@ public class HolidaySearchFeatureTests
         //     Duration = 7
         // });
 
-        // var result = holidaySearch.GetResults().First();
+        // var result = holidaySearch.Search().First();
 
         // Assert.That(result.TotalPrice, Is.EqualTo("328.00"));
         // Assert.That(result.Flight.Id, Is.EqualTo(2));

@@ -1,6 +1,6 @@
 public interface IFlightSearch
 {
-    IEnumerable<Flight> GetResults();
+    IEnumerable<Flight> Search();
 }
 
 public class FlightSearch { }

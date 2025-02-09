@@ -13,9 +13,9 @@ public class HolidaySearchUnitTests
     }
 
     [Test]
-    public void GetResults_WithCustomerRequirments_ReturnsTheBestFlightInTheResults()
+    public void Search_WithCustomerRequirments_ReturnsTheBestFlightInTheResults()
     {
-        _mockFlightSearch.Setup((m) => m.GetResults()).Returns(new List<Flight>{
+        _mockFlightSearch.Setup((m) => m.Search()).Returns(new List<Flight>{
             new Flight {
                 Id = 1,
                 DepartingFrom = "MAN",
@@ -32,7 +32,7 @@ public class HolidaySearchUnitTests
             Duration = 7
         }, _mockFlightSearch.Object);
 
-        var result = holidaySearch.GetResults().First();
+        var result = holidaySearch.Search().First();
 
         Assert.That(result.Flight.Id, Is.EqualTo(1));
         Assert.That(result.Flight.DepartingFrom, Is.EqualTo("MAN"));

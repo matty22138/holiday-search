@@ -12,13 +12,13 @@ public class HolidaySearch
         _flightSearch = flightSearch;
     }
 
-    public IEnumerable<SearchResult> GetResults()
+    public IEnumerable<SearchResult> Search()
     {
         //Exact match
         //HotelSearch
         //FlightSearch
         //Total price
-        var matchingFlight = _flightSearch.GetResults().First();
+        var matchingFlight = _flightSearch.Search().First();
 
         return new List<SearchResult> {
             new SearchResult
