@@ -12,6 +12,10 @@ public class HolidaySearch
 
     public IEnumerable<SearchResult> GetResults()
     {
+        //Exact match
+        //HotelSearch
+        //FlightSearch
+        //Total price
         if (_customerRequirements.TravelingTo == "LPA")
         {
             return new List<SearchResult> {
