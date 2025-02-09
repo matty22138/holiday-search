@@ -5,7 +5,7 @@ public class HotelSearchUnitTests
     [Test]
     public void ExactSearch_WithCustomerRequirments_ReturnsTheExactMatchingHotel()
     {
-        var holidaySearch = new HotelSearch(new CustomerRequirements()
+        var hotelSearch = new HotelSearch(new CustomerRequirements()
         {
             DepartingFrom = "LGW",
             TravelingTo = "AGP",
@@ -13,7 +13,7 @@ public class HotelSearchUnitTests
             Duration = 7
         });
 
-        var result = holidaySearch.ExactSearch().First();
+        var result = hotelSearch.ExactSearch().First();
 
         Assert.That(result.Id, Is.EqualTo(9));
         Assert.That(result.Name, Is.EqualTo("Nh Malaga"));
@@ -21,24 +21,24 @@ public class HotelSearchUnitTests
         Assert.That(result.TotalPrice, Is.EqualTo(581));
     }
 
-    // [Test]
-    // public void ExactSearch_WithDifferentCustomerRequirments_ReturnsTheExactMatchingHotel()
-    // {
-    //     var holidaySearch = new FlightSearch(new CustomerRequirements()
-    //     {
-    //         DepartingFrom = "MAN",
-    //         TravelingTo = "AGP",
-    //         DepartureDate = "2023-10-25",
-    //         Duration = 7
-    //     });
+    [Test]
+    public void ExactSearch_WithDifferentCustomerRequirments_ReturnsTheExactMatchingHotel()
+    {
+        var hotelSearch = new HotelSearch(new CustomerRequirements()
+        {
+            DepartingFrom = "MAN",
+            TravelingTo = "AGP",
+            DepartureDate = "2023-07-05",
+            Duration = 10
+        });
 
-    //     var result = holidaySearch.ExactSearch().First();
+        var result = hotelSearch.ExactSearch().First();
 
-    //     Assert.That(result.Id, Is.EqualTo(12));
-    //     Assert.That(result.DepartingFrom, Is.EqualTo("MAN"));
-    //     Assert.That(result.TravellingTo, Is.EqualTo("AGP"));
-    //     Assert.That(result.Price, Is.EqualTo(202));
-    // }
+        Assert.That(result.Id, Is.EqualTo(10));
+        Assert.That(result.Name, Is.EqualTo("Barcelo Malaga"));
+        Assert.That(result.PricePerNight, Is.EqualTo(45));
+        Assert.That(result.TotalPrice, Is.EqualTo(450));
+    }
 
     // [Test]
     // public void ExactSearch_WhereNoHotelsMatchCustomerRequirements_ReturnsNoHotel()
