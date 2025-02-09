@@ -1,6 +1,6 @@
 ﻿namespace HolidaySearch.Tests;
 
-public class Tests
+public class HolidaySearchTests
 {
     [SetUp]
     public void Setup()
