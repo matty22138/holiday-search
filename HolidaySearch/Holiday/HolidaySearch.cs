@@ -27,7 +27,8 @@ public class HolidaySearch
             new Holiday
             {
                 Flight = matchingFlight,
-                Hotel = matchingHotel
+                Hotel = matchingHotel,
+                TotalPrice = matchingFlight.Price + matchingHotel.TotalPrice
             }
         };
     }
