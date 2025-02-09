@@ -46,22 +46,19 @@ public class FlightSearchUnitTests
         Assert.That(result.Price, Is.EqualTo(202));
     }
 
-    // [Test]
-    // public void ExactSearch_WhereNoFlightsMatchCustomerRequirements_ReturnsNoFlights()
-    // {
-    //     var holidaySearch = new FlightSearch(new CustomerRequirements()
-    //     {
-    //         DepartingFrom = "MAN",
-    //         TravelingTo = "AGP",
-    //         DepartureDate = "2025-10-25",
-    //         Duration = 7
-    //     });
+    [Test]
+    public void ExactSearch_WhereNoFlightsMatchCustomerRequirements_ReturnsNoFlights()
+    {
+        var holidaySearch = new FlightSearch(new CustomerRequirements()
+        {
+            DepartingFrom = "MAN",
+            TravelingTo = "AGP",
+            DepartureDate = "2025-10-25",
+            Duration = 7
+        });
 
-    //     var result = holidaySearch.ExactSearch().First();
+        var results = holidaySearch.ExactSearch();
 
-    //     Assert.That(result.Id, Is.EqualTo(12));
-    //     Assert.That(result.DepartingFrom, Is.EqualTo("MAN"));
-    //     Assert.That(result.TravellingTo, Is.EqualTo("AGP"));
-    //     Assert.That(result.Price, Is.EqualTo(202));
-    // }
+        Assert.That(results, Is.Empty);
+    }
 }
