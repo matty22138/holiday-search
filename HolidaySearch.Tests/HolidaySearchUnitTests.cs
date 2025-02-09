@@ -58,7 +58,7 @@ public class HolidaySearchUnitTests
             TravelingTo = "LPA",
             DepartureDate = "2022-11-10",
             Duration = 7
-        });
+        }, _mockFlightSearch.Object);
 
         var result = holidaySearch.GetResults().First();
 
